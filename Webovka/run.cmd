@@ -1,0 +1,1 @@
+python tornado_template_assets.py
