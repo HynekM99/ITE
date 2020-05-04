@@ -1,3 +1,3 @@
-python tornado_template_assets.py
+python wtchdg.py
 @echo off
 set /p id="Press Enter..."
