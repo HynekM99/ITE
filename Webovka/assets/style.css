@@ -1,83 +1,79 @@
 html, body {
     font-family: "Calibri";
-    background-color: rgba(181, 246, 255, 0.589);
+    background-color: rgb(53, 53, 53);
+    margin: 0;
 }
 
-#btn_check {
-    position: absolute;
-    top: 330px;
-    left: 455px;
-    width: 60px;
-    height: 25px;
-    background-color: white;
-    color: black;
-    font-size: 15px;
+a.header_link:link, a.header_link:visited {
+    background-color: rgb(31, 31, 31);
+    color: white;
     text-align: center;
-    padding: 0px;
-    border: 1px solid black;
+    padding-bottom: 5px;
+    text-decoration: none;
+    vertical-align: baseline;
+    display: inline-block;
 }
 
-#btn_reset {
-    position: absolute;
-    top: 330px;
-    left: 518px;
-    width: 60px;
-    height: 25px;
-    background-color: white;
-    color: red;
-    font-size: 15px;
-    text-align: center;
-    padding: 0px;
-    border: 1px solid black;
+#header_img {
+    height: 40px;
+    display: inline-block;
+    vertical-align: baseline;
 }
 
-#textbox {
-    position: absolute;
-    top: 330px;
-    left: 280px;
-    width: 166px;
-    background-color: white;
-    color: black;
-    font-size: 16px;
+.main_header {
+    padding: 10px;
     text-align: left;
-    padding: 2px;
-    border: 1px solid black;
-}
-
-#main_frame {
-    background-color: turquoise;
-    color: black;
+    background: rgb(31, 31, 31);
+    color: white;
     font-size: 30px;
-    text-align: left;
-    padding: 5px;
-    margin-bottom: 5px;
-    border: 1px solid black;
 }
 
-#text_frame {
-    width: 450px;
-    background-color: rgb(161, 229, 238);
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
+.team_select_menu, .team_stats {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+div.main {
+    margin: 0px auto;
+    position: relative;
+    top: 10px;
+    width: 50%;
+}
+
+.selection {
+    background-color: rgb(73, 73, 73);
+    height: 25px;
     padding: 2px;
-    border: 1px solid black;
 }
 
-#img_lvodicka {
-    position: absolute;
-    top: 150px;
-    left: 50px;
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    alt: "Ladislav Vodička";
-}
+.color_indicator {
+    background-color: rgb(73, 73, 73);
+    border: none;
+    color: white;
+    width: auto;
+    
+    margin-bottom: 1px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    display: inline-block;
+  }
 
-.img_part {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: 1px solid black;
-}
+.btn_team_select {
+    background-color: rgb(73, 73, 73);
+    border: none;
+    color: white;
+    width: 70px;
+    margin-bottom: 1px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn_team_select:hover {
+    background-color: rgb(61, 61, 61);
+  }

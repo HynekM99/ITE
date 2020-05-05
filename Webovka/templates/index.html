@@ -2,33 +2,69 @@
 <html lang="cz">
 <head>
     <meta charset="UTF-8">
-    <title>Teplota</title>
+    <title>Teplotní ústředna</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css" type="text/css" >
 
     <!-- Scripts -->
     <script type="text/javascript">
-        var xmlhttp = new XMLHttpRequest();
-        var url = "data.json";
         var ws;
-        var all_data = [];
+        var tableCreated = false;
+        var jsonData = {
+            "black": null,
+            "blue": null,
+            "green": null,
+            "orange": null,
+            "pink": null,
+            "red": null,
+            "yellow": null
+        };
+
+        var teams = {
+            black: "black",
+            blue: "blue",
+            green: "green",
+            orange: "orange",
+            pink: "pink",
+            red: "red",
+            yellow: "yellow"
+        };
+
+        var valueIndexes = {
+            curTemp: "posledni",
+            avgTemp: "prumerna",
+            minTemp: "minimalni",
+            maxTemp: "maximalni"
+        };
+
+        var headers = {
+            curTemp: "Aktuální teplota",
+            avgTemp: "Průměrná hodnota",
+            minTemp: "Minimální teplota",
+            maxTemp: "Maximální teplota"
+        };
+
+        var selectedTeam = teams.black;
     </script>
 
     <script src="my_script.js" type="text/javascript"></script>
 </head>
 <body onload="on_loaded()">
-    <button id="btn_check" onclick="sendToServer()">
-        Zadat
-    </button>
 
-    <div id="main_frame">
-        Teploty
+    <div class="main_header">
+        <a class="header_link" href="http://localhost:8881"><img src="thermometer.png" id="header_img"></a>
+        <a class="header_link" href="http://localhost:8881">Teplotní ústředna</a>
     </div>
 
-    <div id="text_frame">
-        &nbsp;
-    </div>
+    <div class="main">
+        <div class="team_select_menu" id="team_select_menu">
+            &nbsp;
+        </div>
 
+        <div class="team_stats" id="team_stats">
+            &nbsp;
+        </div>
+    </div>
 </body>
 </html>
