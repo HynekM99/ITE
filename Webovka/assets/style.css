@@ -4,7 +4,7 @@ html, body {
     margin: 0;
 }
 
-a.header_link:link, a.header_link:visited {
+.header_link, #header_txt_link:link, #header_txt_link:visited {
     background-color: rgb(31, 31, 31);
     color: white;
     text-align: center;
@@ -15,53 +15,66 @@ a.header_link:link, a.header_link:visited {
 }
 
 #header_img {
+    padding-top: 5px;
     height: 40px;
     display: inline-block;
     vertical-align: baseline;
 }
 
 .main_header {
-    padding: 10px;
+    padding-bottom: 10px;
+    position: sticky;
     text-align: left;
     background: rgb(31, 31, 31);
     color: white;
     font-size: 30px;
+    border-bottom: 1px solid black;
 }
 
 .team_select_menu, .team_stats {
     display: inline-block;
     vertical-align: text-top;
+    padding: 0;
+    margin: 0;
+    height: 203px;
+    background-color: rgb(140, 140, 140);
 }
 
-div.main {
+.no_stats_alert {
+    width: 390px;
+    padding: 5px;
+}
+
+.main {
     margin: 0px auto;
     position: relative;
     top: 10px;
-    width: 50%;
+    width: max-content;
+    background-color: rgb(140, 140, 140);
+    padding-right: 3px;
 }
 
 .selection {
-    background-color: rgb(73, 73, 73);
+    background-color: rgb(61, 61, 61);
     height: 25px;
     padding: 2px;
 }
 
 .color_indicator {
-    background-color: rgb(73, 73, 73);
+    background-color: rgb(61, 61, 61);
     border: none;
     color: white;
     width: auto;
-    
     margin-bottom: 1px;
     text-align: left;
     text-decoration: none;
     display: block;
     font-size: 18px;
     display: inline-block;
-  }
+}
 
 .btn_team_select {
-    background-color: rgb(73, 73, 73);
+    background-color: rgb(61, 61, 61);
     border: none;
     color: white;
     width: 70px;
@@ -72,8 +85,22 @@ div.main {
     font-size: 18px;
     cursor: pointer;
     display: inline-block;
-  }
+}
 
-  .btn_team_select:hover {
-    background-color: rgb(61, 61, 61);
-  }
+.btn_team_select:hover {
+    background-color: rgb(73, 73, 73);
+}
+
+table {
+    border-collapse: collapse;
+    width: 400px;
+}
+  
+table, th, td {
+    border-bottom: 1px solid black;
+    padding: 2px;
+}
+
+th {
+    text-align: left;
+}

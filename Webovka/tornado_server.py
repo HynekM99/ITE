@@ -75,8 +75,14 @@ class MainHandler(RequestHandler):
     @tornado.gen.coroutine
     def get(self):
         self.render('./templates/index.html')
+        print("===========Tornado===========")
+        print("File index.html sent\n")
 
 class MainWebSocketHandler(WebSocketHandler):
+
+    @tornado.gen.coroutine
+    def check_origin(self, origin):
+        return True
 
     @tornado.gen.coroutine
     def open(self):
