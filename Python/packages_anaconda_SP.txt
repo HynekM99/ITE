@@ -1,0 +1,5 @@
+py38 - pouzivam python 3.8
+-----------------------------------------
+conda install -c jmcmurray json
+conda install -c sci-bots paho-mqtt
+conda install -c conda-forge statistics - mozna to nepujde, ale jde to i bez toho
