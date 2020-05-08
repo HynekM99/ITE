@@ -1,31 +1,32 @@
 html, body {
     font-family: "Calibri";
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(20, 20, 20);
     margin: 0;
 }
 
 .header_link, #header_txt_link:link, #header_txt_link:visited {
-    background-color: rgb(31, 31, 31);
     color: white;
-    text-align: center;
-    padding-bottom: 5px;
+    padding: 5px 0px;
     text-decoration: none;
-    vertical-align: baseline;
     display: inline-block;
+}
+
+.header_link_img {
+    color: white;
+    display: inline-block;
+    vertical-align: bottom;
 }
 
 #header_img {
-    padding-top: 5px;
-    height: 40px;
+    width: 40px;
     display: inline-block;
-    vertical-align: baseline;
 }
 
 .main_header {
-    padding-bottom: 10px;
+    padding: 5px 0px;
     position: sticky;
     text-align: left;
-    background: rgb(31, 31, 31);
+    background: rgb(30, 30, 30);
     color: white;
     font-size: 30px;
     border-bottom: 1px solid black;
@@ -34,61 +35,50 @@ html, body {
 .team_select_menu, .team_stats {
     display: inline-block;
     vertical-align: text-top;
-    padding: 0;
-    margin: 0;
-    height: 203px;
-    background-color: rgb(140, 140, 140);
+    height: max-content;
 }
 
 .no_stats_alert {
-    width: 390px;
-    padding: 5px;
+    width: 400px;
 }
 
 .main {
     margin: 0px auto;
+    padding-right: 3px;
     position: relative;
     top: 10px;
     width: max-content;
-    background-color: rgb(140, 140, 140);
-    padding-right: 3px;
+    background-color: rgb(100, 100, 100);
 }
 
 .selection {
     background-color: rgb(61, 61, 61);
     height: 25px;
-    padding: 2px;
+    padding: 1px;
 }
 
 .color_indicator {
-    background-color: rgb(61, 61, 61);
-    border: none;
-    color: white;
-    width: auto;
-    margin-bottom: 1px;
-    text-align: left;
-    text-decoration: none;
-    display: block;
     font-size: 18px;
     display: inline-block;
 }
 
-.btn_team_select {
+.btn_team_select, .btn_team_select_btn {
     background-color: rgb(61, 61, 61);
     border: none;
     color: white;
-    width: 70px;
-    margin-bottom: 1px;
     text-align: left;
-    text-decoration: none;
-    display: block;
     font-size: 18px;
+    width: 75px;
+    display: inline-block;
+}
+
+.btn_team_select_btn {
     cursor: pointer;
-    display: inline-block;
 }
 
-.btn_team_select:hover {
+.btn_team_select_btn:hover {
     background-color: rgb(73, 73, 73);
+    text-decoration: underline;
 }
 
 table {
