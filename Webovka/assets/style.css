@@ -39,7 +39,7 @@ html, body {
 }
 
 .no_stats_alert {
-    width: max-content;
+    width: 500px;
 }
 
 .main {
@@ -82,7 +82,8 @@ html, body {
 
 table {
     border-collapse: collapse;
-    width: max-content;
+    width: 500px;
+    margin-top: 3px;
 }
   
 table, th, td {

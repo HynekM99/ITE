@@ -1,5 +1,7 @@
 function on_loaded() {
-    var address = "localhost:8881";
+    var address = "192.168.0.14";
+    var port = "8881";
+    var fullAddress = address+":"+port;
 
     for (var key in teams) {
         jsonData[teams[key]] = null;
@@ -7,9 +9,11 @@ function on_loaded() {
 
     createButtons();
     setActiveButton();
-    document.getElementById("header_img_link").setAttribute("href", "http://"+address)
-    document.getElementById("header_txt_link").setAttribute("href", "http://"+address)
-    ws = new WebSocket("ws://"+address+"/websocket");
+
+    document.getElementById("header_img_link").setAttribute("href", "http://"+fullAddress);
+    document.getElementById("header_txt_link").setAttribute("href", "http://"+fullAddress);
+
+    ws = new WebSocket("ws://"+fullAddress+"/websocket");
     ws.onopen = onSocketOpen;
     ws.onmessage = onSocketMessage;
     ws.onclose = onSocketClose;
@@ -23,7 +27,7 @@ function createButtons() {
         var capitalTeamName = team.charAt(0).toUpperCase() + team.slice(1);
         var btn = "<button class=\"btn_team_select_btn\" id=\""+team+"\" onclick=\"selectTeam(this.id)\">"+capitalTeamName+"</button>";
         var indic = "<div class=\"color_indicator\" id=\"color_indicator_"+team+"\" style=\"color:"+team+"\">"+teamStatusIndicators.offline+"</div>";
-        var btnDiv = "<div class=\"btn_team_select\">"+btn+"</div>"
+        var btnDiv = "<div class=\"btn_team_select\">"+btn+"</div>";
         selectionBtns += "<div class=\"selection\" id=\"selection_"+team+"\">"+indic+btnDiv+"</div>";
     }
 
@@ -37,7 +41,7 @@ function setActiveButton() {
 
 function setAllTeamStatuses() {
     for (var key in teams)
-        setTeamStatus(teams[key], jsonData[teams[key]] !== null)
+        setTeamStatus(teams[key], jsonData[teams[key]] !== null && jsonData[teams[key]]["online"] == true);
 }
 
 function setTeamStatus(team, status) {
@@ -65,6 +69,7 @@ function setTableStatus(visible) {
     else {
         setNoStatsAlert("Nejsou k dispozici data");
         document.getElementById("main_table").remove();
+        tableCreated = false;
     }
 }
 
@@ -90,7 +95,7 @@ function addNewElementToExisting(newElement, newElementId, existingElementId) {
 
 function updateTableValue(elementId, value) {
     document.getElementById(elementId).innerHTML = value;
-    if (elementId != "cas" && value != "No data")
+    if (elementId != "td_cas" && value != "No data")
         document.getElementById(elementId).innerHTML += " °C";
 }
 
