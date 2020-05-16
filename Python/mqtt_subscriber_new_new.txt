@@ -1,0 +1,33 @@
+Změny:
+	"list_temps" ... list, který indexuješ názvem týmu a získáváš list teplot toho týmu
+		     ... v podstatě jsou to ty staré listy "list_blueTmprs", "list_blackTmprs" atd. akorát v jednom listu
+
+	"team_time"  ... list, který indexuješ názvem týmu a získáváš čas poslední aktualizace toho týmu
+		     ... to formátování času jsem dal pryč, z ničeho nic mi začalo vyhazovat error, kdyžtak si ho upravím pak sám v javascriptu
+
+	"dict_data"  ... udělal jsem ho global, ať pak při zjišťování stavu (online, offline) můžeš jenom updatovat hodnotu dict_data[team_name]["online"] a hned zapsat do souboru metodou writeToFile()
+	
+	jinak jsem ten kód celkově udělal dynamičtější
+
+Opravování chyb:
+	Při sledování příchozích chyb jsem zjistil, že jediné chyby co se objevují jsou nahrazení speciálního znaku náhodným písmenem.
+	Takže postup je skoro stejný jako jsi ho měl předtím, jen neodstraňuju konkrétní znaky ",': atd., ale odstraňuju cokoliv na jejich pozici.
+
+	Postup (metoda getCorrectData()): 
+		1. Přijdou data s chybou: {'source': 'fake', 'team_name': 'blue', 'created_on'R '2020-05-15T16:00:00.000000', 'temperature': 4.00000000000}
+		   Chyba = 'created_on'R
+
+		2. Odstraním složené závorky
+		   Dostanu: 'source': 'fake', 'team_name': 'blue', 'created_on'R '2020-05-15T16:00:00.000000', 'temperature': 4.00000000000
+
+		3. Rozdělím podle mezer (ty jsou vždy správně)
+		   Dostanu list: ["'source':", "'fake',",  "'team_name':", "'blue',", "'created_on'R", "'2020-05-15T16:00:00.000000',", "'temperature':", "4.00000000000"]
+
+		4. Vytvořím slovník correctData
+		   Klíče a hodnoty:
+			"source"      ... "fake"
+			"team_name"   ... odříznu znaky: 'blue',  ->  blue
+			"created_on"  ... znovu odříznu znaky; čas je vždy ve stejném formátu, takže v metodě fixTime() jen přepíšu znaky na konkrétních pozicích
+			"temperature" ... nahradím libovolné písmeno tečkou, pak převedu str na float
+
+		5. Vrátím slovník correctData, takže mám rovnou slovník a nemusím pak provádět json.loads()
