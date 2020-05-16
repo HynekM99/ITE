@@ -39,7 +39,7 @@ html, body {
 }
 
 .no_stats_alert {
-    width: 400px;
+    width: max-content;
 }
 
 .main {
@@ -77,20 +77,25 @@ html, body {
 }
 
 .btn_team_select_btn:hover {
-    background-color: rgb(73, 73, 73);
     text-decoration: underline;
 }
 
 table {
     border-collapse: collapse;
-    width: 400px;
+    width: max-content;
 }
   
 table, th, td {
     border-bottom: 1px solid black;
-    padding: 2px;
+    font-size: 20px;
+    padding: 1px;
 }
 
 th {
     text-align: left;
+    padding-right: 10px;
+}
+
+tr:hover {
+    background-color: rgb(90, 90, 90);
 }
