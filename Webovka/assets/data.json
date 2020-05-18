@@ -1,50 +1,65 @@
 {
-    "blue": {
-        "prumerna": 18.804,
-        "median": 18.804,
-        "maximalni": 18.899,
-        "minimalni": 18.71,
-        "posledni": 18.71,
-        "cas": "2020-05-08T21:44:04.795227"
-    },
     "black": {
-        "prumerna": 14.162,
-        "median": 14.162,
-        "maximalni": 14.181,
-        "minimalni": 14.144,
-        "posledni": 14.144,
-        "cas": "2020-05-08T21:44:04.795227"
+        "prumerna": "7.8",
+        "median": "7.7",
+        "maximalni": "8.8",
+        "minimalni": "7.1",
+        "posledni": "7.2",
+        "cas": "2020-05-19T00:48:28",
+        "online": true
     },
-    "pink": {
-        "prumerna": 13.818,
-        "median": 13.818,
-        "maximalni": 14.18,
-        "minimalni": 13.456,
-        "posledni": 13.456,
-        "cas": "2020-05-08T21:44:04.795227"
+    "blue": {
+        "prumerna": "10.9",
+        "median": "10.8",
+        "maximalni": "11.8",
+        "minimalni": "10.0",
+        "posledni": "10.8",
+        "cas": "2020-05-19T00:48:28",
+        "online": true
     },
-    "red": {
-        "prumerna": 11.863,
-        "median": 11.988,
-        "maximalni": 12.05,
-        "minimalni": 11.552,
-        "posledni": 11.988,
-        "cas": "2020-05-08T21:44:04.795227"
+    "green": {
+        "prumerna": "4.4",
+        "median": "4.3",
+        "maximalni": "5.3",
+        "minimalni": "3.6",
+        "posledni": "3.6",
+        "cas": "2020-05-19T00:49:07",
+        "online": true
     },
     "orange": {
-        "prumerna": 23.006,
-        "median": 23.129,
-        "maximalni": 23.188,
-        "minimalni": 22.7,
-        "posledni": 22.7,
-        "cas": "2020-05-08T21:44:04.795227"
+        "prumerna": "6.7",
+        "median": "6.5",
+        "maximalni": "7.8",
+        "minimalni": "6.2",
+        "posledni": "6.2",
+        "cas": "2020-05-19T00:48:40",
+        "online": true
+    },
+    "pink": {
+        "prumerna": "19.7",
+        "median": "19.6",
+        "maximalni": "20.7",
+        "minimalni": "19.1",
+        "posledni": "19.2",
+        "cas": "2020-05-19T00:48:38",
+        "online": true
+    },
+    "red": {
+        "prumerna": "14.6",
+        "median": "14.5",
+        "maximalni": "15.5",
+        "minimalni": "13.9",
+        "posledni": "14.4",
+        "cas": "2020-05-19T00:48:58",
+        "online": true
     },
     "yellow": {
-        "prumerna": 25.399,
-        "median": 25.399,
-        "maximalni": 25.493,
-        "minimalni": 25.306,
-        "posledni": 25.306,
-        "cas": "2020-05-08T21:44:04.795227"
+        "prumerna": "5.4",
+        "median": "5.3",
+        "maximalni": "6.4",
+        "minimalni": "4.8",
+        "posledni": "4.9",
+        "cas": "2020-05-19T00:47:22",
+        "online": true
     }
 }

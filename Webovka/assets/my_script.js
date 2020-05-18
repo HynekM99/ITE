@@ -4,7 +4,7 @@ function on_loaded() {
     var fullAddress = address+":"+port;
 
     for (var key in teams) {
-        jsonData[teams[key]] = null;
+        jsonData[teams[key]] = {};
     }
 
     createButtons();
@@ -36,12 +36,16 @@ function createButtons() {
 
 function setActiveButton() {
     document.getElementById(lastSelectedTeam).setAttribute("style", "");
+    document.getElementById("selection_"+lastSelectedTeam).setAttribute("style", "");
     document.getElementById(selectedTeam).setAttribute("style", "background-color: rgb(73, 73, 73);");
+    document.getElementById("selection_"+selectedTeam).setAttribute("style", "background-color: rgb(73, 73, 73);");
 }
 
 function setAllTeamStatuses() {
-    for (var key in teams)
-        setTeamStatus(teams[key], jsonData[teams[key]] !== null && jsonData[teams[key]]["online"] == true);
+    for (var key in teams) {
+        var state = jsonData[teams[key]] !== null && jsonData[teams[key]]["online"] == true;
+        setTeamStatus(teams[key], state);
+    }
 }
 
 function setTeamStatus(team, status) {
@@ -53,86 +57,68 @@ function selectTeam(btnID) {
     lastSelectedTeam = selectedTeam;
     selectedTeam = btnID;
     setActiveButton();
-    var dataAvailable = jsonData[selectedTeam] !== null;
-    setTableStatus(dataAvailable)
-    tableCreated = dataAvailable
+    updateAllStats();
 }
 
-function setTableStatus(visible) {
-    if (visible) {
-        setNoStatsAlert("");
-        if (tableCreated)
-            updateTable();
-        else
-            createTable();
+function updateStat(stat, value) {
+    elementId = "small_section_"+stat;
+    if (stat == "cas") {
+        document.getElementById(elementId).innerHTML = getFormattedTime(value);
     }
     else {
-        setNoStatsAlert("Nejsou k dispozici data");
-        document.getElementById("main_table").remove();
-        tableCreated = false;
+        document.getElementById(elementId).innerHTML = value;
+        if (value != "No data")
+            document.getElementById(elementId).innerHTML += " °C";
     }
 }
 
-function createTable() {
-    addNewElementToExisting("table", "main_table", "stat_table")
-
-    for (var key in headers) {
-        addNewElementToExisting("tr", "tr_"+valueIndexes[key], "main_table");
-        addNewElementToExisting("th", "th_"+valueIndexes[key], "tr_"+valueIndexes[key]);
-        addNewElementToExisting("td", "td_"+valueIndexes[key], "tr_"+valueIndexes[key]);
-
-        document.getElementById("th_"+valueIndexes[key]).innerHTML = headers[key];
-        updateTableValue("td_"+valueIndexes[key], jsonData[selectedTeam][valueIndexes[key]])
-        tableCreated = true;
+function updateAllStats() {
+    for (var key in valueIndexes) {
+        stat = valueIndexes[key];
+        value = jsonData[selectedTeam][valueIndexes[key]];
+        if (value == null)
+            value = "No data";
+        updateStat(stat, value);
     }
 }
 
-function addNewElementToExisting(newElement, newElementId, existingElementId) {
-    var el = document.createElement(newElement);
-    el.setAttribute("id", newElementId);
-    document.getElementById(existingElementId).appendChild(el);
-}
-
-function updateTableValue(elementId, value) {
-    document.getElementById(elementId).innerHTML = value;
-    if (elementId != "td_cas" && value != "No data")
-        document.getElementById(elementId).innerHTML += " °C";
-}
-
-function updateTable() {
-    for (var key in headers) {
-        updateTableValue("td_"+valueIndexes[key], jsonData[selectedTeam][valueIndexes[key]]);
+function getFormattedTime(time) {
+    if (time == "No data") {
+        return time;
     }
-}
+    var formatted = "";
+    var dateTime =  time.split("T");
+    var date = dateTime[0].split("-");
+    var time = dateTime[1];
 
-function setNoStatsAlert(message) {
-    document.getElementById("no_stats_alert").innerHTML = message;
-}
-
-function getKeyFromTeams(string) {
-    for (var key in teams) {
-        if (teams[key] == string) return key;
-    }
-    return null;
+    formatted = time+"<br/>"+date[2]+"."+date[1]+"."+date[0];
+    return formatted;
 }
 
 function onSocketOpen() {
     console.log("WS client: Websocket openned.");
-};
+    ws.send("request");
+}
 
 function onSocketMessage(evt) {
     console.log("WS client: Message received.");
-    var jsonObject = JSON.parse(evt.data)
+    dataReceived = evt.data;
+    console.log(dataReceived);
+    if (dataReceived.substr(0, 10) == "statistics") {
+        dataReceived = dataReceived.slice(11);
+    
+        var jsonObject = JSON.parse(dataReceived)
 
-    for (var team in jsonData) {
-        var dataAvailable = jsonObject.hasOwnProperty(team);
-        if (dataAvailable)
-            jsonData[team] = jsonObject[team];
-        if (team == selectedTeam)
-            setTableStatus(dataAvailable);            
+        for (var team in jsonData) {
+            var dataAvailable = jsonObject.hasOwnProperty(team);
+            if (dataAvailable)
+                jsonData[team] = jsonObject[team];
+            if (team == selectedTeam)
+                updateAllStats();
+        }
+        setAllTeamStatuses();
     }
-    setAllTeamStatuses();
-};
+}
 
 function onSocketClose() {
     console.log("WS client: Websocket closed.");
