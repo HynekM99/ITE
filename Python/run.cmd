@@ -1,3 +1,3 @@
-python mqtt_subscriber_new_new.py
+python mqtt_subscriber_v1.py
 @echo off
 set /p id="Press Enter..."
