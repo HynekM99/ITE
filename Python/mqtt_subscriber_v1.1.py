@@ -5,6 +5,8 @@ import re
 from threading import Timer
 from datetime import datetime
 import time
+import asyncio
+import websockets
 SERVER = '147.228.124.230'  # RPi
 TOPIC = 'ite/#'
 
@@ -150,7 +152,16 @@ def on_message(client, userdata, msg):
             dict_data[team_name]["online"] = False
    
     writeToFile("d:/KKY/ITE/SP/ITE-master/Webovka/assets/data.json", json.dumps(dict_data, indent = 4))
-                                                                      
+    asyncio.new_event_loop().run_until_complete(send_message("broadcast "+json.dumps(dict_data)))
+
+async def send_message(message):
+    address = 'ws://localhost:8881/websocket'
+    try:
+        async with websockets.connect(address) as ws:
+            await ws.send(message)
+    except:
+        print("Could not establish connection with address "+address)
+        
 def writeToFile(path, data):
     try:
         with open(path, "w+") as f:
