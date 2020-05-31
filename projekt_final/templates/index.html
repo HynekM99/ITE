@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <title>Teplotní ústředna</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" type="text/css" >
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+        var ws;
+        var jsonData = {};
+        var teamTimers = {};
+        var teams = {};
+        var valueIndexes = {};
+        var teamStatusIndicators = {};
+        var selectedTeam;
+        var lastSelectedTeam;
+    </script>
+
+    <script src="my_script.js" type="text/javascript"></script>
+</head>
+
+<body onload="on_loaded()">
+    <div class="main_header">
+        <div class="header_section" id="header_logo">
+            <div class="header_link">
+                <a id="header_img_link" href=""><img src="thermometer.png" id="header_img" alt="Teplotní ústředna"/></a>
+            </div>
+            <div class="header_link">
+                <a id="header_txt_link" href="">Teplotní ústředna</a>
+            </div>
+        </div>
+        <div class="header_section" id="customer_server_status">
+            <div class="header_server_status" id="server_status_header">Server status: </div>
+            <div class="header_server_status" id="server_status"></div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="team_select_menu" id="team_select_menu"></div><!--
+     --><div class="team_stats" id="team_stats">
+            <div class="big_section" id="big_section_last_and_avg_temp">
+                <div class="mid_section" id="mid_section_last_temp">
+                    <div class="small_section" id="small_section_header_posledni">Poslední teplota</div>
+                    <div class="small_section" id="small_section_posledni"></div>
+                </div>
+                <div class="mid_section" id="mid_section_avg_temp">
+                    <div class="small_section" id="small_section_header_prumerna">Průměrná teplota</div>
+                    <div class="small_section" id="small_section_prumerna"></div>
+                </div>
+            </div><!--
+         --><div class="big_section" id="big_section_other">
+                <div class="mid_section" id="mid_section_max_temp">
+                    <div class="small_section" id="small_section_header_maximalni">Maximální teplota</div>
+                    <div class="small_section" id="small_section_maximalni"></div>
+                </div>
+                <div class="mid_section" id="mid_section_min_temp">
+                    <div class="small_section" id="small_section_header_minimalni">Minimální teplota</div>
+                    <div class="small_section" id="small_section_minimalni"></div>
+                </div>
+                <div class="mid_section" id="mid_section_cas">
+                    <div class="small_section" id="small_section_header_cas">Poslední aktualizace</div>
+                    <div class="small_section" id="small_section_cas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
