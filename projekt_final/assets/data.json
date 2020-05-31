@@ -1,0 +1,58 @@
+{
+    "black": {
+        "prumerna": "6.7",
+        "maximalni": "31.7",
+        "minimalni": "-20.1",
+        "posledni": "12.4",
+        "cas": "2020-05-31T20:40:19",
+        "online": false
+    },
+    "blue": {
+        "prumerna": "7.3",
+        "maximalni": "32.3",
+        "minimalni": "-14.7",
+        "posledni": "13.2",
+        "cas": "2020-05-31T20:40:52",
+        "online": false
+    },
+    "green": {
+        "prumerna": "9.6",
+        "maximalni": "34.6",
+        "minimalni": "-15.8",
+        "posledni": "15.2",
+        "cas": "2020-05-31T20:39:51",
+        "online": false
+    },
+    "orange": {
+        "prumerna": "7.3",
+        "maximalni": "32.7",
+        "minimalni": "-18.0",
+        "posledni": "13.5",
+        "cas": "2020-05-31T20:40:17",
+        "online": false
+    },
+    "pink": {
+        "prumerna": "12.3",
+        "maximalni": "37.8",
+        "minimalni": "-14.0",
+        "posledni": "18.3",
+        "cas": "2020-05-31T20:39:51",
+        "online": false
+    },
+    "red": {
+        "prumerna": "10.0",
+        "maximalni": "36.1",
+        "minimalni": "-16.8",
+        "posledni": "15.5",
+        "cas": "2020-05-31T20:40:29",
+        "online": false
+    },
+    "yellow": {
+        "prumerna": "11.2",
+        "maximalni": "37.1",
+        "minimalni": "-14.7",
+        "posledni": "17.1",
+        "cas": "2020-05-31T20:39:56",
+        "online": false
+    }
+}
